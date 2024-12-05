@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Produtos</title>
+    <style>
+        /* Corpo do site */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('img/Fundo site catalogo.png');
+            background-size: cover;
+            background-position: center;
+            color: #004c7a;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 30px;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-weight: 700;
+        }
+
+        /* Container de catálogo */
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Estilo para os produtos */
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05); /* Efeito suave de zoom */
+        }
+
+        .product img {
+            width: 170px; /* Manter o tamanho original da imagem */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombras suaves */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product img:hover {
+            transform: scale(1.1); /* Aumento suave ao passar o mouse */
+        }
+
+        /* Estilo para os botões de produto */
+        .product button {
+            background-color: #004c7a;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease-in-out;
+        }
+
+        .product button:hover {
+            background-color: #006494;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo para os botões de navegação */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .action-buttons button {
+            background-color: #006494;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-buttons button:hover {
+            background-color: #004c7a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-buttons button:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 100, 150, 0.5);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Efeito de Fade In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo para o botão de fechar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .product img {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .catalog {
+                padding: 20px;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Catálogo de Produtos</h1>
+    <div class="catalog">
+        <!-- Primeira linha -->
+        <div class="row">
+            <div class="product">
+                <img src="img/placa mãe pica.webp" alt="Placa mãe">
+                <button onclick="showProductInfo('Placa mãe', 'R$ 900,00', 'Placa mãe Xtreme, com chipset Z590, para PCs de alto desempenho.')">Placa mãe</button>
+            </div>
+            <div class="product">
+                <img src="img/Placa de video rx6600.png" alt="Placa de vídeo">
+                <button onclick="showProductInfo('Placa de vídeo', 'R$ 1.600,00', 'Placa de vídeo RX6600 com 8GB de VRAM para jogos e design gráfico.')">Placa de vídeo</button>
+            </div>
+            <div class="product">
+                <img src="img/Processador.webp" alt="Processador">
+                <button onclick="showProductInfo('Processador', 'R$ 1.000,00', 'Processador Intel Core i7-10700K, 8 núcleos e 16 threads.')">Processador</button>
+            </div>
+            <div class="product">
+                <img src="img/fonte gaymer.png" alt="Fonte de Alimentação">
+                <button onclick="showProductInfo('Fonte de Alimentação', 'R$ 400,00', 'Fonte de 650W, 80+ Bronze, ideal para PC gamers.')">Fonte de Alimentação</button>
+            </div>
+            <div class="product">
+                <img src="img/MEMORIA CORSAIR.png" alt="Memória RAM">
+                <button onclick="showProductInfo('Memória RAM', 'R$ 350,00', 'Memória RAM Corsair Vengeance LPX de 16GB DDR4 3200MHz.')">Memória RAM</button>
+            </div>
+        </div>
+        <!-- Segunda linha -->
+        <div class="row">
+            <div class="product">
+                <img src="img/SSD NVME.webp" alt="SSD Nvme">
+                <button onclick="showProductInfo('SSD Nvme', 'R$ 400,00', 'SSD NVMe 500GB, leitura e gravação ultra-rápidas.')">SSD Nvme</button>
+            </div>
+            <div class="product">
+                <img src="img/gabinete grosso.png" alt="Gabinete Gamer">
+                <button onclick="showProductInfo('Gabinete Gamer', 'R$ 300,00', 'Gabinete ATX com vidro temperado e iluminação ARGB.')">Gabinete Gamer</button>
+            </div>
+            <div class="product">
+                <img src="img/Walter cooler.png" alt="Water Cooler">
+                <button onclick="showProductInfo('Water Cooler', 'R$ 900,00', 'Water Cooler 360mm com bomba de alta performance.')">Water Cooler</button>
+            </div>
+            <div class="product">
+                <img src="img/Air cooler.webp" alt="Air Cooler">
+                <button onclick="showProductInfo('Air Cooler', 'R$ 200,00', 'Air Cooler com 120mm e baixa acústica.')">Air Cooler</button>
+            </div>
+            <div class="product">
+                <img src="img/HD.png" alt="HD">
+                <button onclick="showProductInfo('HD', 'R$ 250,00', 'HD de 1TB, alta durabilidade.')">HD</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botões de navegação -->
+    <div class="action-buttons">
+        <button onclick="window.location.href='login.html'">Voltar</button>
+        <button onclick="window.location.href='pagamento.html'">Próximo</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Função para exibir as informações do produto no modal
+        function showProductInfo(name, price, description) {
+            // Atribuindo as informações ao modal
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalDescription').innerText = description;
+            
+            // Exibindo o modal com efeito de fade-in
+            const modal = document.getElementById('productModal');
+            modal.style.display = "block";
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.opacity = 1;
+            }, 10); // para ativar o efeito fade-in
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300); // Espera o tempo da animação de fade-out
+        }
+
+        // Fecha o modal se clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

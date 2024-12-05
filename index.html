@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo à Loja de Peças de Computador</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="icon" href="img/icone login.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+    <style>
+        /* Fundo personalizado */
+        body {
+            background-image: url('img/fundo site azul_preto.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra de navegação */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+            border-bottom: 2px solid #007bff;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #007bff;
+        }
+
+        .navbar .navbar-nav {
+            display: flex;
+            justify-content: flex-start; /* Alinha os itens à esquerda */
+            align-items: center;
+            gap: 10px; /* Reduz o espaçamento entre os botões */
+        }
+
+        .navbar .nav-link {
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        .navbar .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efeito de transição nos botões de login e cadastro */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Estilo do conteúdo principal */
+        main {
+            padding: 100px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 60vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInText 2s forwards 0.5s;
+        }
+
+        /* Efeitos de animação */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Estilo dos ícones e botões de dúvidas */
+        .btn-duvidas {
+            display: inline-flex;
+            align-items: center;
+            background-color: #007bff; /* Azul */
+            border-radius: 25px;
+            color: white;
+            padding: 8px 18px;
+            font-size: 1rem;
+            margin-top: 0; /* Remover margem superior */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-duvidas:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .btn-duvidas i {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra de navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Loja de Peças</a>
+            <div class="navbar-nav">
+                <!-- Botão de dúvidas com ícone -->
+                <a href="duvidas.html" class="btn btn-duvidas">
+                    <i class="fas fa-question-circle"></i> Dúvidas
+                </a>
+                <a href="login.html" class="btn btn-primary">Entrar</a>
+                <a href="cadastro.html" class="btn btn-primary">Cadastre-se</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <h1>Bem-vindo à nossa loja!</h1>
+        <p>Encontre as melhores peças de computador com os melhores preços.</p>
+        <!-- Botão para mais informações ou para navegar -->
+        <a href="catalogo.html" class="btn btn-primary">Ver Produtos</a>
+    </main>
+</body>
+</html>

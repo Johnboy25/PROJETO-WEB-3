@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tela de Cadastro</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-image: url('img/fundo site azul_preto.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                font-family: Arial, sans-serif;
+                color: #00d9d9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                text-align: center;
+                width: 400px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                font-size: 1rem;
+                border: none;
+                border-radius: 25px;
+                background-color: #003d5e;
+                color: white;
+                text-align: center;
+            }
+
+            .form-group.small-group {
+                display: flex;
+                gap: 10px;
+            }
+
+            .form-group.small-group input {
+                flex: 1;
+            }
+
+            .btn {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 15px 40px; /* Aumenta o tamanho do botão */
+                font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+                background-color: #00d9d9; /* Cor de fundo */
+                color: #003d5e; /* Cor do texto */
+                border: none;
+                border-radius: 30px; /* Borda arredondada */
+                cursor: pointer;
+                text-decoration: none;
+                transition: background-color 0.3s, transform 0.3s; /* Efeito de transição */
+            }
+
+            .btn:hover {
+                background-color: #00fafa; /* Cor do botão ao passar o mouse */
+                transform: scale(1.05); /* Aumenta o botão levemente */
+            }
+
+            #show-hide {
+                position: relative;
+                bottom: 50px;
+                float: right;
+                cursor: pointer;
+                border: none;
+                font-size: 14pt;
+                background-color: transparent;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Cadastro</h1>
+            <form action="usuario-controller" method="post">
+                <input type="hidden" name="pagina" value="cadastro">
+
+                <div class="form-group">
+                    <input type="text" name="nome" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="data_nascimento" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="cpf" class="cpf" placeholder="CPF" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="telefone" class="phone_with_ddd" placeholder="N.º de telefone" required>
+                </div>
+                <div class="form-group small-group">
+                    <input type="text" name="cidade" placeholder="Cidade" required>
+                    <input type="text" name="rua" placeholder="Rua" required>
+                    <input type="text" name="cep" class="cep" placeholder="CEP" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="senha" name="senha" placeholder="Senha" required minlength="6">
+                    <p id="show-hide">🔒</p>
+                </div>
+                <input type="submit" class="btn" value="Cadastrar">
+                <button type="button" class="btn" onclick="window.location.href = 'login.html'">Voltar para login</button>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="js/jquery.mask.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('.cep').mask('00000-000');
+                $('.phone_with_ddd').mask('(00) 00000-0000');
+                $('.cpf').mask('000.000.000-00', {reverse: true});
+            });
+        </script>
+
+        <script>
+            $('#show-hide').click(function() {
+                if (this.innerHTML === "🔒") {
+                    this.innerHTML = "🔓";
+                    document.getElementById("senha").type = "text";
+                } else {
+                    this.innerHTML = "🔒";
+                    document.getElementById("senha").type = "password";
+                }
+            });
+        </script>
+    </body>
+</html>
